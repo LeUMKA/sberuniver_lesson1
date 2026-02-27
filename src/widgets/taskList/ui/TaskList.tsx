@@ -7,7 +7,7 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import { TaskCard, type ITask } from 'entities/task'
 import { useTasks } from '../hooks/useTasks'
 import type { TFilter } from '../model/types'
-import { FilterButton } from './buttons/FilterButton'
+import { FilterButton } from 'shared/ui/buttons'
 
 type TaskListProps = {
   tasks: ITask[]
