@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
-import { TaskPage } from 'pages/tasks/ui/TaskPage'
 import { HomePage } from 'pages/home'
+import { TaskPage } from 'pages/tasks'
 
 export type AppRoute = {
   path: string
@@ -10,10 +10,8 @@ export type AppRoute = {
 export const routes: AppRoute[] = [
   {
     path: '/',
-    element: <HomePage title='Задачи на сегодня' content={<TaskPage />}  />,
+    element: (
+      <HomePage title="Задачи на сегодня" content={<TaskPage  />} />
+    ),
   },
-  // {
-  //   path: '/taskList',
-  //   element: <TaskList />,
-  // },
 ]

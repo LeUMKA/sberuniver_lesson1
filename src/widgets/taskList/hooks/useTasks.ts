@@ -1,10 +1,10 @@
 import type { ITask } from "entities/task";
 import { useState } from "react";
-import type { TFilter, TUseTasksRurnType } from "../model/types";
+import type { TFilter, TUseTasksReturnType } from "../model/types";
 
 
 
-export function useTasks(initial: ITask[]): TUseTasksRurnType {
+export function useTasks(initial: ITask[]): TUseTasksReturnType {
   const [tasks, setTasks] = useState(initial);
   const [filter, setFilter] = useState<TFilter>('all');
 

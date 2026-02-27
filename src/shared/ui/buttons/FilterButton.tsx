@@ -1,8 +1,8 @@
-import { InputLabel, MenuItem, Select } from '@mui/material'
+import { InputLabel, MenuItem, Select, type SelectChangeEvent } from '@mui/material'
 
 interface IFilterButtonProps {
   filter: string
-  onChange: (event: any) => void
+  onChange: (event: SelectChangeEvent) => void
   menuItems: { value: string; label: string }[]
   stateLabel?: string
 }
