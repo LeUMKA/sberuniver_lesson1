@@ -13,15 +13,12 @@ export const FilterButton = ({
   menuItems,
   stateLabel,
 }: IFilterButtonProps) => {
+  const label = stateLabel ?? 'Статус'
+
   return (
     <>
-      <InputLabel id="task-filter-label">{stateLabel}</InputLabel>
-      <Select
-        labelId="task-filter-label"
-        label="Статус"
-        value={filter}
-        onChange={onChange}
-      >
+      <InputLabel id="task-filter-label">{label}</InputLabel>
+      <Select labelId="task-filter-label" label={label} value={filter} onChange={onChange}>
         {menuItems.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {item.label}

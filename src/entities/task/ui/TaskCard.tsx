@@ -1,18 +1,19 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Stack,
-  Typography,
-} from '@mui/material'
-import {CheckCircle, IndeterminateCheckBox} from '@mui/icons-material';
+import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
+import { CheckCircle, IndeterminateCheckBox } from '@mui/icons-material'
+import { memo, useCallback } from 'react'
 import type { ITask } from '../model/types'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-type TaskCardProps = ITask & { onClick: () => void }
+type TProps = Pick<ITask, 'id' | 'todo' | 'completed'> & {
+  onRemove: (id: ITask['id']) => void
+}
 
-export const TaskCard = (props: TaskCardProps) => {
-  const { title, completed, onClick } = props
+export const TaskCard = memo((props: TProps) => {
+  const { id, todo, completed, onRemove } = props
+
+  const handleRemove = useCallback(() => {
+    onRemove(id)
+  }, [id, onRemove])
 
   return (
     <Card variant="outlined">
@@ -30,18 +31,18 @@ export const TaskCard = (props: TaskCardProps) => {
                 variant="subtitle1"
                 sx={{ textDecoration: completed ? 'line-through' : 'none' }}
               >
-                {title}
+                {todo}
               </Typography>
             </Stack>
           </Stack>
 
           <CardActions sx={{ p: 0 }}>
-            <Button variant="outlined" color="error" size="small" onClick={onClick}>
-              Удалить
+            <Button variant="outlined" color="error" size="small" onClick={handleRemove}>
+              <DeleteIcon />
             </Button>
           </CardActions>
         </Stack>
       </CardContent>
     </Card>
   )
-}
+})
