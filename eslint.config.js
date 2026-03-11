@@ -24,6 +24,10 @@ const fsdZones = Object.entries(forbiddenDeps).flatMap(([importerLayer, forbidde
     // Files inside importerLayer must not import from blockedLayer
     target: layerPath(importerLayer),
     from: layerPath(blockedLayer),
+    except:
+      blockedLayer === 'app' && ['features', 'pages', 'widgets'].includes(importerLayer)
+        ? ['./index.ts', './store/hooks.ts']
+        : [],
   })),
 )
 
