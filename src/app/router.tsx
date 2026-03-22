@@ -1,17 +1,31 @@
-import type { ReactElement } from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 import { HomePage } from 'pages/home'
 import { TaskPage } from 'pages/tasks'
+import { Navigation } from 'shared/ui/navigation/Navigation'
+import { Box } from '@mui/material'
+import { FormPage } from 'pages/form'
 
-export type AppRoute = {
-  path: string
-  element: ReactElement
-}
+const RootLayout = () => (
+  <Box>
+    <Navigation />
+    <HomePage title="Задачи на сегодня" content={<TaskPage />} />
+  </Box>
+)
 
-export const routes: AppRoute[] = [
+const FormLayout = () => (
+  <Box>
+    <Navigation />
+    <HomePage title="Форма для заполнения" content={<FormPage />} />
+  </Box>
+)
+
+export const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <HomePage title="Задачи на сегодня" content={<TaskPage  />} />
-    ),
+    element: <RootLayout />,
   },
-]
+  {
+    path: '/form',
+    element: <FormLayout />,
+  },
+])

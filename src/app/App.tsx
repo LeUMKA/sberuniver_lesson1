@@ -1,7 +1,5 @@
-import { routes } from './router'
+import { Outlet } from 'react-router-dom'
 
 export function App() {
-  const rootRoute = routes.find((route) => route.path === '/')
-
-  return <div className="app">{rootRoute?.element}</div>
+  return <Outlet />
 }

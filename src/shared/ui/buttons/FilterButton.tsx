@@ -1,4 +1,5 @@
 import { InputLabel, MenuItem, Select, type SelectChangeEvent } from '@mui/material'
+import { memo } from 'react';
 
 interface IFilterButtonProps {
   filter: string
@@ -7,7 +8,7 @@ interface IFilterButtonProps {
   stateLabel?: string
 }
 
-export const FilterButton = ({
+export const FilterButton = memo(({
   filter,
   onChange,
   menuItems,
@@ -27,4 +28,4 @@ export const FilterButton = ({
       </Select>
     </>
   )
-}
+})
