@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+}
+
+.dialog {
+  min-width: 320px;
+  max-width: 90vw;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  isolation: isolate;
+}
+
+.light {
+  background: #ffffff;
+  color: #111111;
+}
+
+.dark {
+  background: #1f2125;
+  color: #f1f4f8;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+}
