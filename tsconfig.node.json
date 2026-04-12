@@ -9,6 +9,7 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "types": ["node"],
+    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -26,5 +27,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "build-hw/configs/**/*.ts"]
 }
