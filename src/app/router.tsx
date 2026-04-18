@@ -29,7 +29,6 @@ const LayoutWithNavigation = ({ component, title }: ILayoutWithNavigation) => (
 )
 
 export const router = createBrowserRouter([
-  // ============ PUBLIC AUTH ROUTES (without Navigation) ============
   {
     path: '/login',
     element: <LoginPage />,
@@ -47,19 +46,16 @@ export const router = createBrowserRouter([
     element: <SuccessRegisterPage />,
   },
 
-  // ============ PUBLIC PAGE (without Navigation) ============
   {
     path: '/public',
     element: <PublicPage />,
   },
 
-  // ============ DEFAULT / → redirect to /public ============
   {
     path: '/',
     element: <Navigate to="/public" replace />,
   },
 
-  // ============ PROTECTED ROUTES (with Navigation + ProtectedRoute guard) ============
   {
     path: '/app',
     element: <ProtectedRoute />,
