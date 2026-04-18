@@ -5,6 +5,7 @@ import { RefClassPage } from 'pages/refClassPage'
 import { Navigation } from 'shared/ui/navigation/Navigation'
 import { Box } from '@mui/material'
 import { FormPage } from 'pages/form'
+import { PortalShowcase } from 'pages/portal-showcase'
 import {
   LoginPage,
   RegisterPage,
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: 'ref',
         element: <LayoutWithNavigation component={<RefClassPage />} title="Практика по useRef" />,
+      },
+      {
+        path: 'portal',
+        element: <LayoutWithNavigation component={<PortalShowcase />} title="Практика по React Portal" />,
       },
     ],
   },

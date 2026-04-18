@@ -43,6 +43,11 @@ export function Navigation() {
             Примеры useRef
           </Button>
         </Link>
+        <Link to="/app/portal" style={{ textDecoration: 'none' }}>
+          <Button variant={isActive('/app/portal') ? 'contained' : 'text'} color="primary">
+            Portals
+          </Button>
+        </Link>
       </Box>
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
         {isAuthenticated && (
@@ -61,4 +66,3 @@ export function Navigation() {
     </Box>
   )
 }
-
