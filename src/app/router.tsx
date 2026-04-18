@@ -1,37 +1,80 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { HomePage } from 'pages/home'
 import { TaskPage } from 'pages/tasks'
 import { RefClassPage } from 'pages/refClassPage'
 import { Navigation } from 'shared/ui/navigation/Navigation'
 import { Box } from '@mui/material'
 import { FormPage } from 'pages/form'
+import {
+  LoginPage,
+  RegisterPage,
+  ProfilePage,
+  PublicPage,
+  ProtectedRoute,
+  SuccessLoginPage,
+  SuccessRegisterPage,
+} from 'features/authRouting'
 
-const RootLayout = () => (
+interface ILayoutWithNavigation {
+  component: React.ReactElement
+  title: string
+}
+
+const LayoutWithNavigation = ({ component, title }: ILayoutWithNavigation) => (
   <Box>
     <Navigation />
-    <HomePage title="Задачи на сегодня" content={<TaskPage />} />
-  </Box>
-)
-
-const FormLayout = () => (
-  <Box>
-    <Navigation />
-    <HomePage title="Форма для заполнения" content={<FormPage />} />
+    <HomePage title={title} content={component} />
   </Box>
 )
 
 export const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
+  {
+    path: '/success-login',
+    element: <SuccessLoginPage />,
+  },
+  {
+    path: '/success-register',
+    element: <SuccessRegisterPage />,
+  },
+
+  {
+    path: '/public',
+    element: <PublicPage />,
+  },
+
+  {
     path: '/',
-    element: <HomePage title="Задачи на сегодня" content={<TaskPage />} />,
+    element: <Navigate to="/public" replace />,
   },
+
   {
-    path: '/ref',
-    element: <HomePage title="Справочная страница" content={<RefClassPage />} />,
-    element: <RootLayout />,
-  },
-  {
-    path: '/form',
-    element: <FormLayout />,
+    path: '/app',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '',
+        element: <LayoutWithNavigation component={<TaskPage />} title="Задачи на сегодня" />,
+      },
+      {
+        path: 'profile',
+        element: <LayoutWithNavigation component={<ProfilePage />} title="Профиль" />,
+      },
+      {
+        path: 'form',
+        element: <LayoutWithNavigation component={<FormPage />} title="Форма для заполнения" />,
+      },
+      {
+        path: 'ref',
+        element: <LayoutWithNavigation component={<RefClassPage />} title="Практика по useRef" />,
+      },
+    ],
   },
 ])

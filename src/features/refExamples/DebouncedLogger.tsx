@@ -16,7 +16,6 @@ export const DebouncedLogger = () => {
 
     timeoutIdRef.current = setTimeout(() => {
       setDebouncedValue(value)
-      console.log(`Дебаунс ввод: ${value}`)
       timeoutIdRef.current = null
     }, 1000)
   }

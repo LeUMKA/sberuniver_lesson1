@@ -20,7 +20,6 @@ export const ClickTimer = () => {
     const message = `Время с первого клика: ${timeDifference}ms, Всего кликов: ${clickDataRef.current.clickCount}`
 
     setClickInfo(message)
-    console.log(message)
   }
 
   return (
