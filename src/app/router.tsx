@@ -15,6 +15,7 @@ import {
   SuccessLoginPage,
   SuccessRegisterPage,
 } from 'features/authRouting'
+import { React19ExamplesPage } from 'pages/react19Examples'
 
 interface ILayoutWithNavigation {
   component: React.ReactElement
@@ -30,12 +31,16 @@ const LayoutWithNavigation = ({ component, title }: ILayoutWithNavigation) => (
 
 export const router = createBrowserRouter([
   {
+    path: '/form19',
+    element: <LayoutWithNavigation component={<React19ExamplesPage />} title="Примеры React 19" />,
+  },
+  {
     path: '/login',
-    element: <LoginPage />,
+    element: <LayoutWithNavigation component={<LoginPage />} title="Вход" />,
   },
   {
     path: '/register',
-    element: <RegisterPage />,
+    element: <LayoutWithNavigation component={<RegisterPage />} title="Регистрация" />,
   },
   {
     path: '/success-login',

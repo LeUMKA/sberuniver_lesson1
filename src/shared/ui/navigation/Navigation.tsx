@@ -27,33 +27,57 @@ export function Navigation() {
         gap: 1,
       }}
     >
-      <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-        <Link to="/app" style={{ textDecoration: 'none' }}>
-          <Button variant={isActive('/app') ? 'contained' : 'text'} color="primary">
-            Задачи
-          </Button>
-        </Link>
-        <Link to="/app/form" style={{ textDecoration: 'none' }}>
-          <Button variant={isActive('/app/form') ? 'contained' : 'text'} color="primary">
-            Форма
-          </Button>
-        </Link>
-        <Link to="/app/ref" style={{ textDecoration: 'none' }}>
-          <Button variant={isActive('/app/ref') ? 'contained' : 'text'} color="primary">
-            Примеры useRef
-          </Button>
-        </Link>
-        <Link to="/app/portal" style={{ textDecoration: 'none' }}>
-          <Button variant={isActive('/app/portal') ? 'contained' : 'text'} color="primary">
-            Portals
-          </Button>
-        </Link>
-      </Box>
+      {isAuthenticated ? (
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+          <Link to="/app" style={{ textDecoration: 'none' }}>
+            <Button variant={isActive('/app') ? 'contained' : 'text'} color="primary">
+              Задачи
+            </Button>
+          </Link>
+          <Link to="/app/form" style={{ textDecoration: 'none' }}>
+            <Button
+              variant={isActive('/app/form') ? 'contained' : 'text'}
+              color="primary"
+            >
+              Форма
+            </Button>
+          </Link>
+          <Link to="/app/ref" style={{ textDecoration: 'none' }}>
+            <Button variant={isActive('/app/ref') ? 'contained' : 'text'} color="primary">
+              Примеры useRef
+            </Button>
+          </Link>
+
+          <Link to="/app/portal" style={{ textDecoration: 'none' }}>
+            <Button
+              variant={isActive('/app/portal') ? 'contained' : 'text'}
+              color="primary"
+            >
+              Portals
+            </Button>
+          </Link>
+        </Box>
+      ) : (
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+          <Link to="/form19" style={{ textDecoration: 'none' }}>
+            <Button
+              variant={isActive('/app/form19') ? 'contained' : 'text'}
+              color="primary"
+            >
+              Примеры react19
+            </Button>
+          </Link>
+        </Box>
+      )}
+
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
         {isAuthenticated && (
           <>
             <Link to="/app/profile" style={{ textDecoration: 'none' }}>
-              <Button variant={isActive('/app/profile') ? 'contained' : 'text'} color="primary">
+              <Button
+                variant={isActive('/app/profile') ? 'contained' : 'text'}
+                color="primary"
+              >
                 Профиль
               </Button>
             </Link>
